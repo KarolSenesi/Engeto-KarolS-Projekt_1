@@ -1,5 +1,6 @@
 """
-KarolS-Projekt_1: První projekt do Engeto Online Python Akademie
+KarolS-Projekt_1: První projekt do Engeto Online Python Akademie - Textový
+analyzátor
 
 author: Karol Seneši
 email: senesi.charles@seznam.cz
@@ -51,7 +52,7 @@ text = TEXTS[choice - 1]
 # Analýza textu
 words = re.findall(r'\b\w+\b', text)
 titlecase_words = [word for word in words if word.istitle()]
-uppercase_words = [word for word in words if word.isupper()]
+uppercase_words = [word for word in words if word.isupper() and word.isalpha()]
 lowercase_words = [word for word in words if word.islower()]
 numeric_strings = [int(word) for word in words if word.isdigit()]
 word_lengths = [len(word) for word in words]
@@ -63,7 +64,7 @@ print(f"There are {len(titlecase_words)} titlecase words.")
 print(f"There are {len(uppercase_words)} uppercase words.")
 print(f"There are {len(lowercase_words)} lowercase words.")
 print(f"There are {len(numeric_strings)} numeric strings.")
-print(f"The sum of all the numbers is {sum(numeric_strings)}")
+print(f"The sum of all the numbers {sum(numeric_strings)}")
 print("-" * 40)
 
 # Vytvoření sloupcového grafu
@@ -72,5 +73,4 @@ print("-" * 40)
 for length in sorted(set(word_lengths)):
     count = word_lengths.count(length)
     print(f"{length:<3}| {'*' * count:<20}|{count}")
-
 print("-" * 40)
